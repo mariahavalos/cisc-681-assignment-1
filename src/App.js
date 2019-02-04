@@ -52,20 +52,17 @@ export default class Simple extends React.Component {
     return box
   }
 
-  regularPolygonGeometry (n, innerColor, outerColor) {
+  regularPolygonGeometry (sides, innerColor, outerColor) {
     let geometry = new THREE.Geometry()
 
-    for (let x = 0; x < n; x++) {
+    for (let x = 0; x < sides; x++) {
       geometry.vertices.push(
         new THREE.Vector3(
-          2 * Math.sin(Math.PI / n + x * ((2 * Math.PI) / n)),
-          2 * Math.cos(Math.PI / n + x * ((2 * Math.PI) / n)),
-          2
+          2 * Math.sin(Math.PI / sides + x * ((2 * Math.PI) / sides)),
+          2 * Math.cos(Math.PI / sides + x * ((2 * Math.PI) / sides)),
+          1
         )
       )
-    }
-
-    for (let x = 0; x < n; x++) {
       let face = new THREE.Face3(0, x + 1, x + 2)
       face.vertexColors.push(new THREE.Color(outerColor))
       face.vertexColors.push(new THREE.Color(innerColor))
